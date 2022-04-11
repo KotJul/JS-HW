@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  
+</head>
+
+<!-- Задача 1
+Создайте пустой список ul под ним input для текста и кнопку . 
+При нажатии на кнопку, дабавляйте введенный текст в список сверху. 
+Если текст пустой, выводите alert с сообщением об ошибке -->
+
+<!-- <body>
+    <ul id="bar">
+    </ul>
+    <form>
+        <input type="text" value="" id="text">
+        <input type="button" name="print" value="Нажми" />
+    </form>
+    <script>
+        let form = document.forms[0];
+        let ul = document.querySelector('ul');
+
+        function error() {
+            alert('Ошибка');
+        }
+        function pressForm() {
+            const text = form.elements.text.value;
+            const bar = document.getElementById("bar");
+            const li = document.createElement("li");
+            li.textContent = text;
+            bar.append(li);
+        }
+        let value = form.elements.password.value;
+        function isEmpty() {
+            if (value === "0") {
+                /*не работает*/
+                error.push('Ошибка');
+            } 
+        }
+
+        form.elements.text.addEventListener("click", isEmpty)
+        const printButton = form.elements.print.value;
+        form.elements.print.addEventListener("click", pressForm)
+    </script>
+</body> -->
+
+
+<!--
+         Задача 2
+Дан массив с картинками. Сделать, чтобы при нажатии на картинку она менялась на следующую,
+последняя меняется на первую. На странице должен быть только один элемент с тегом <img> -->
+<!-- <body> -->
+    <!-- <img id="image" src="" onClick="imgsrc();"> /*один вариант решения*/
+
+<script>
+const images = [
+    'https://cdn.pixabay.com/photo/2019/10/15/13/40/winter-4551699_960_720.jpg',
+    'https://cdn.pixabay.com/photo/2021/04/22/06/40/duck-6198196_960_720.jpg',
+    'https://cdn.pixabay.com/photo/2021/04/17/23/58/bunny-6187026_960_720.jpg',
+    'https://cdn.pixabay.com/photo/2020/09/18/21/16/child-5582985_960_720.jpg'
+]
+
+
+        let i=0;
+        const image=document.getElementById("image");
+        document.body.prepend(image) 
+        // Добавьте свои картинки в массив через запятую
+        function imgsrc() {
+            i++;i%=images.length;
+            image.src = images[i];
+        }
+        imgsrc()
+
+</script> -->
+
+    <!-- не доработан
+        <img id="image" src="" alt="УПС">
+<script>
+
+const images = [
+    'https://cdn.pixabay.com/photo/2019/10/15/13/40/winter-4551699_960_720.jpg',
+    'https://cdn.pixabay.com/photo/2021/04/22/06/40/duck-6198196_960_720.jpg',
+    'https://cdn.pixabay.com/photo/2021/04/17/23/58/bunny-6187026_960_720.jpg',
+    'https://cdn.pixabay.com/photo/2020/09/18/21/16/child-5582985_960_720.jpg'
+]
+let i=0;
+        let image=document.getElementById("image");
+        function imgsrc() {
+            i++;
+            image.src = images[i];
+        }
+        
+        image.addEventListener('click', imgsrc());
+
+
+
+    </script>
+</body> -->
+
+<!-- Задача 3
+Создайте форму
+Добавьте в нее 2 поля для ввода текста
+Добавьте поле checkbox
+Добавьте параграф p
+Добавьте кнопку button
+При вводе чисел в текстовые поля и нажатии кнопку в p должна выводится их сумма, если флажко checkbox будет отмечен, выводить разность чисел -->
+
+<body>
+    <form action="">
+
+        <input class = 'inpt' type="text" value="" placeholder="число">
+        <input class = 'inpt' type="text" value="" placeholder="число">
+        <input class = 'check'type="checkbox" name="" id="checkbox">
+        <button class="press">Жми</button>
+        <p class="sum"> сумма</p>
+    </form>
+
+    <script>
+const form = document.forms[0];
+console.log(form);
+
+const elem = document.querySelector('.press');
+elem.addEventListener('click', func);
+const input = document.querySelectorAll('.inpt');
+
+function func(){/* не работает додумать*/
+    let sum = 0;
+    for(let i = 0; i < input.length; i++){
+        sum += +input[i].value;
+    }
+    const newElem = document.querySelector('.sum');
+	newElem.value = sum;
+} 
+</script>
+</body>
+</html>

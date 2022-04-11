@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    canvas {
+      /* width: 800px;
+      height: 800px; */
+      margin: 30px;
+      background-color: burlywood;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    const canvas = document.querySelector('#canvas');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    let ctx = canvas.getContext('2d');
+
+    // пятиконечная звезда
+    function drawStar(radius, insert, n){
+      ctx.beginPath();/*Метод beginPath должен вызываться в начале рисования линии*/
+      ctx.save();/*сохраняет все состояние canvas, помещая текущее состояние в стек*/
+      ctx.translate(200, 200)/*(canvas.width/2, canvas.height/2) - центр полотна canvas, translate - перезаписываем позицию 0:0 в новое место полотна */
+      ctx.moveTo(0, 0 - radius);/*Метод moveTo перемещает перо для рисования в заданную точку, ничего при этом не рисуя*/
+      for(let i = 0; i < n; i++){
+        ctx.rotate(Math.PI / n);/*добавляет поворот*/
+        ctx.lineTo(0, 0 - (radius * insert));/*Метод lineTo проводит линию от точки к точке*/
+        ctx.rotate(Math.PI / n);/*добавляет поворот*/
+        ctx.lineTo(0, 0 - radius);/*Метод lineTo проводит линию от точки к точке*/
+      }
+      ctx.restore();/*возвращаем сохраненое в методе save() */
+      ctx.closePath();/*Метод closePath автоматически замыкает фигуру, нарисованную с помощью метода lineTo, рисуя при этом прямую линию из конечной точки в начальную*/
+      ctx.strokeStyle = 'gray';/*Свойство strokeStyle задает цвет линии*/
+      ctx.lineWidth   = 50;/*Свойство lineWidth задает толщину линии*/
+      ctx.stroke();/*Метод stroke вызывается для завершения рисования линии*/
+      ctx.fillStyle = 'green'; /*Свойство fillStyle задает цвет заливки фигуры*/
+      ctx.fill();/*Метод fill закрашивает фигуру*/
+}
+
+drawStar(100, 0.5, 5);
+
+//шестнацатиконечная звезда
+
+function drawStar1(radius, insert, n){
+      ctx.beginPath();
+      ctx.save();
+      ctx.translate(700, 300)/*центр полотна canvas*/
+      ctx.moveTo(0, 0 - radius);
+      for(let i = 0; i < n; i++){
+        ctx.rotate(Math.PI / n);
+        ctx.lineTo(0, 0 - (radius * insert));
+        ctx.rotate(Math.PI / n);
+        ctx.lineTo(0, 0 - radius);
+      }
+      ctx.restore();
+      ctx.closePath();
+      ctx.strokeStyle = 'red';
+      ctx.stroke();
+      ctx.fillStyle = 'red'; 
+      ctx.fill();
+}
+
+drawStar1(20, 0.4, 16);
+
+// восьмиконечная звезда
+
+    function drawStar3(radius, insert, n){
+      ctx.beginPath();
+      ctx.save();
+      ctx.translate(200, 500)/*центр полотна canvas*/
+      ctx.moveTo(0, 0 - radius);
+      for(let i = 0; i < n; i++){
+        ctx.rotate(Math.PI / n);
+        ctx.lineTo(0, 0 - (radius * insert));
+        ctx.rotate(Math.PI / n);
+        ctx.lineTo(0, 0 - radius);
+      }
+      ctx.restore();
+      ctx.closePath();
+      ctx.strokeStyle = 'gray';
+      ctx.lineWidth   = 10;
+      ctx.stroke();
+      ctx.fillStyle = 'blue'; 
+      ctx.fill();
+}
+drawStar3(100, 0.5, 8);/*меняя значение 0,5 внутрений радиус будет меняться и тем самым будет менять остроту наших шипов звезды*/
+  
+
+// шеснадцатиконечная звезда с внутренним радиусом 0,8
+
+function drawStar4(radius, insert, n){
+      ctx.beginPath();
+      ctx.save();
+      ctx.translate(500, 600)/*центр полотна canvas*/
+      ctx.moveTo(0, 0 - radius);
+      for(let i = 0; i < n; i++){
+        ctx.rotate(Math.PI / n);
+        ctx.lineTo(0, 0 - (radius * insert));
+        ctx.rotate(Math.PI / n);
+        ctx.lineTo(0, 0 - radius);
+      }
+      ctx.restore();
+      ctx.closePath();
+      ctx.strokeStyle = 'gray';
+      ctx.lineWidth   = 10;
+      ctx.stroke();
+      ctx.fillStyle = 'yellow'; 
+      ctx.fill();
+}
+drawStar4(100, 0.8, 16);
+  </script>
+</body>
+
+</html>

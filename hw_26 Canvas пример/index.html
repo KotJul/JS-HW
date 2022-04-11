@@ -1,0 +1,114 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+  const canvas = document.querySelector('#canvas');
+  canvas.width=800;
+  canvas.height=800;
+  let ctx = canvas.getContext('2d');
+
+function triangle(x,y){
+  ctx.fillStyle='rgb(0,150,0)';
+  ctx.beginPath();
+  ctx.moveTo(x,y);
+  ctx.lineTo(x+50,y+50);
+  ctx.lineTo(x-50,y+50);
+  ctx.fill();
+}
+function tree(x){
+  let height = 4;
+  for( let y=1; y<=3 ; y++){
+    triangle(x,y*45);
+    ctx.beginPath();
+    ctx.fillStyle='rgb(153, 51, 0)';
+    ctx.fillRect(x-15, 45*4, 30, 35);
+    ctx.stroke();
+    ctx.fill();
+    
+  }
+  
+}
+function draw(){
+  for( let x=1; x<=7 ; x++){
+    tree(100*x);
+  }
+}
+draw();
+
+function stump(){
+  for( let y=1; y<=7 ; y++){
+  ctx.rect(80, 190, 35, 45);
+    ctx.stroke();
+    ctx.fill();
+}
+}
+
+function mushroom(x,y){
+  ctx.beginPath();
+  ctx.fillRect();
+  ctx.fill();
+}
+
+</script>
+</body>
+</html> -->
+
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" media="all" href="css/reset.css" /> <!-- reset css -->
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<style>
+    body{ background-color: ivory; }
+    canvas{border:1px solid red;}
+</style>
+<script>/*пример как сделать звезду 5-и конечную из домашки*/
+$(function(){
+
+    var canvas=document.getElementById("canvas");
+    var ctx=canvas.getContext("2d");
+
+    function drawStar(cx,cy,spikes,outerRadius,innerRadius){
+      var rot=Math.PI/2*3;/*rotate -вращать*/
+      var x=cx;
+      var y=cy;
+      var step=Math.PI/spikes;
+
+      ctx.beginPath();
+      ctx.moveTo(cx,cy-outerRadius)
+      for(i=0;i<spikes;i++){
+        x=cx+Math.cos(rot)*outerRadius;
+        y=cy+Math.sin(rot)*outerRadius;
+        ctx.lineTo(x,y)
+        rot+=step
+
+        x=cx+Math.cos(rot)*innerRadius;
+        y=cy+Math.sin(rot)*innerRadius;
+        ctx.lineTo(x,y)
+        rot+=step
+      }
+      ctx.lineTo(cx,cy-outerRadius);
+      ctx.closePath();
+      ctx.lineWidth=5;
+      ctx.strokeStyle='blue';
+      ctx.stroke();
+      ctx.fillStyle='skyblue';
+      ctx.fill();
+    }
+
+    drawStar(100,100,5,30,15);
+
+}); // end $(function(){});
+</script>
+</head>
+<body>
+    <canvas id="canvas" width=300 height=300></canvas>
+</body>
+</html>

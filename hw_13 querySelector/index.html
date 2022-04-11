@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    li{
+        list-style: square;
+    }
+
+</style>
+
+</head>
+<body>
+  
+  <ul>
+    <li>
+        <p>text1</p>
+    </li>
+    <li>
+        <p class="small">text2</p>
+    </li>
+    <li>
+        <p>text3</p>
+    </li>
+    <li>
+        <p class="big">text4</p>
+    </li>
+    <li>
+        <p>text5</p>
+    </li>
+</ul>
+
+  <script>
+
+// Сделайте текст в четных(по порядку следования) тегах p подчеркнутым
+// Удалите тег p с текстом text3
+// Добавьте всем элементам li CSS-класс item
+// Удалите все CSS-классы у тегов p
+
+
+// Сделайте текст в четных(по порядку следования) тегах p подчеркнутым
+const chet =Array.from( document.body.querySelectorAll('ul > li > p'));
+  chet.forEach((p,index) => {
+    /*выбирает содержимое p*/
+        if (Number.parseInt(index)%2==1) {
+          p.style.textDecoration = 'underline'
+          
+        }
+        console.dir(chet)
+      }) 
+
+// Удалите тег p с текстом text3
+const sosed = document.body.querySelector('li').nextElementSibling.nextElementSibling;
+sosed.remove('p')
+console.dir(sosed)
+
+// Добавьте всем элементам li CSS-класс item
+
+// const allAdd =  document.body.querySelector('li');/*добавили только одному li*/
+const allAdd =  document.body.querySelectorAll('p')
+
+// allAdd.classList.add('item');
+console.dir(allAdd);
+
+// Удалите все CSS-классы у тегов p
+const allClass = document.body.querySelectorAll('ul > li > p').className = '';
+console.log(allClass);
+
+
+
+  </script>
+
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <style>
+    html {
+      font-size: 20px;
+      line-height: 8px;
+    }
+
+    .task-item {
+      line-height: 24px;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="tasks-list"> </div>
+
+  <script>
+    const tasks = [{
+        id: 1,
+        completed: false,
+        text: 'Прочитать теорию',
+      },
+      {
+        id: 2,
+        completed: false,
+        text: 'Закрепить на практике',
+      },
+      {
+        id: 3,
+        completed: false,
+        text: 'Посмотреть видео',
+      }
+    ]
+
+    const taskList = document.querySelector(".tasks-list");
+
+function currentTask(parent, task){
+    fetch('http://localhost:3000/tasks')
+    .then ((response) => response.json())
+    .then((user)=>{
+    console.log(user);
+    const div = document.createElement("div");
+    div.className = "task-item";
+    div.taskId = task.id;
+    form = document.createElement("form");
+    input = document.createElement("input");
+    input.type = "checkbox";
+    input.id = "task-" + task.id;
+    span = document.createElement("span");
+    span.innerText = task.text;
+    form.append(input);
+    div.append(form, span);
+    parent.append(div);
+
+    //Навесить обработчики на новую строку
+    input.addEventListener('click',testTask);
+
+})
+}
+
+for (let task of tasks)
+currentTask(taskList, task);
+ 
+function testTask() {
+    let id = +this.id.match(/^task-(\d+)$/)[1]; // поиск task и возвращает в нём нужный id (по индексу), не понимаю значение match(/^task-(\d+)$/)*/
+    tasks.find(e => e.id === id).completed = this.checked;
+    
+}
+  </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

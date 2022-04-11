@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        div {
+            margin: 50px;
+            padding: 50px;
+            border: 2px black dashed;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div></div>
+    <div>
+        <div>
+            <div></div>
+            <div>
+                <div></div>
+                <div></div>
+            </div>
+            <div></div>
+        </div>
+    </div>
+    <div></div>
+    <div>
+        <div></div>
+        <div>
+            <div></div>
+        </div>
+        <div></div>
+        <div></div>
+    </div>
+    <div></div>
+</div>
+
+<script>
+
+for (var i = 0; i < document.body.childNodes.length; i++) {
+      alert( document.body.childNodes[i] ); 
+    }
+</script>
+</body>
+</html>
+Закрасьте все div у которых нет дочерних элементов синим цветом
+Закрасьте все div у которых только 1 дочерний элемент желтым
+Закрасьте все div у которых больше 2 дочерних элементов серым

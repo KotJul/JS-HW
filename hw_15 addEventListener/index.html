@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* button {
+            width: 50px;
+            height: 50px;
+            margin-left: 100px;
+            margin-top: 100px;
+
+        } */
+body{
+    position: relative;
+    width: 400px;
+    height: 400px;
+    background-color: goldenrod;
+}
+        div {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-color: blueviolet;
+        }
+
+        ;
+
+        .button-up .button-left .button-down .button-right {
+            position: absolute;
+        }
+
+        ;
+    </style>
+</head>
+
+<body>
+
+    <!-- Задача 1
+    Создайте кнопку с цифрой 0, при клике на которую, цифра будет увеличиваться на 1 -->
+
+    <!-- <button>0</button>
+<script>
+    const button = document.querySelector('button');
+    button.addEventListener('click',() => {
+        button.textContent ++ /* если делать вместо button input со значением value = "0", чтоб эта цифра увеличивалась вместо textContent пишем value++  */ 
+    })
+    
+</script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+****************************************************** -->
+
+    <!-- Задача 2
+Создайте кнопку, при клике на которую, она будет скрывать сама себя. -->
+
+    <!-- <input type="button" value="Спрячь меня ">
+
+<script>
+
+    const but = document.querySelector('input');
+    but.addEventListener("click",() => {
+        but.hidden = true;
+    })
+
+</script>
+
+</body>
+</html>
+-->
+
+    <!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+************************************************************** 
+
+     Задача 3
+Создайте div шириной и высотой 300px и добавьте в него 4 кнопки 
+с тектом вверх, влево, вниз, вправо. Реализуйте функционал сдвига
+div на 10px при нажатии на кнопку, соответствующую направлению -->
+
+    <div>
+        <button class="button-up">вверх</button>
+        <button class="button-left">влево</button>
+        <button class="button-down">вниз</button>
+        <button class="button-right">вправо</button>
+    </div>
+    <script>
+        const button1 = document.body.querySelector('.button-up');
+        const button2 = document.querySelector('.button-left');
+        const button3 = document.querySelector('.button-down');
+        const button4 = document.querySelector('.button-right');
+
+        const div = document.body.querySelector('div');
+        document.body.prepend(div);
+        div.addEventListener('click', function (event) {
+            
+            div.style.top = event.clientY + '10px';
+            div.style.left = event.clientX + '10px';
+            div.style.bottom = event.clientY - '10px';
+            div.style.right = event.clientX + '10px';
+        })
+    </script>
+
+</body>
+
+</html>
+
+<!-- function mah () {
+    x = document.getElementById("moto").offsetLeft;
+    xn = x + 50;
+    document.getElementById("moto").style.left = xn+"px" -->

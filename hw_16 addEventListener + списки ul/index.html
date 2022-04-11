@@ -1,0 +1,175 @@
+ <!DOCTYPE html>
+ <html lang="en">
+
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+
+     <style>
+         td,
+         th {
+             border: 1px solid gray;
+         }
+     </style>
+ </head>
+
+ <body>
+
+
+     <!-- Задача 1
+Дан ul, в нем несколько li. Под ul сделайте кнопку, по нажатию на которую
+ в конец ul будет добавляться новый li с текстом 'пункт'. Сделайте так, 
+ чтобы при клике на каждый li, ему в конец добавлялся '!'. Это должно работать 
+ и для вновь добавленных li. Задачу решите с помощью делегирования (то есть событие должно быть навешано на ul). -->
+
+     <!-- <ul>
+     <li>Пункт 1</li>
+     <li>Пункт 2</li>
+     <li>Пункт 3</li>
+ </ul>
+ <button>Нажми</button>
+ <script>
+
+const ul = document.querySelector('ul');
+ul.addEventListener('click', addZnak);
+function addZnak() {
+	event.target.innerHTML = event.target.innerHTML + '!';
+}
+
+const button = document.querySelector('button');
+button.addEventListener('click', addLi);
+
+function addLi() {
+	const li = document.createElement('li');
+	li.innerHTML = 'пункт';
+	ul.appendChild(li);
+}
+ </script> 
+
+ /**************************************************************************************************************************************/-->
+
+     <!-- Задача 2
+Создайте список ul > li из 15 элементов. Заполните каждый цифрой он 1 до 15. Добавите обработчики событий, чтобы
+при клике левой кнопкой мыши цифра в li установливалась исходя из суммы 2 соседних элементов li
+при клике праквой кнопкой мыши цифра в li устанавливалась произведению 2 соседних элементов li -->
+
+     <!-- <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+    <li>11</li>
+    <li>12</li>
+    <li>13</li>
+    <li>14</li>
+    <li>15</li>
+</ul>
+
+<script>
+
+let ul = document.querySelector('ul');
+
+function addSumm(el){
+    let firstSibling = el.previousElementSibling;
+    let secondSibling = el.nextElementSibling;
+
+  let sum = parseInt(secondSibling.innerHTML) + parseInt(firstSibling.innerHTML);
+  console.log(sum);
+
+}
+
+document.addEventListener("click", e => {
+    addSumm(e.target);
+}); 
+
+function addUm(el){
+    let firstSibling = el.previousElementSibling;
+    let secondSibling = el.nextElementSibling;
+    let proizved = parseInt(secondSibling.innerHTML) * parseInt(firstSibling.innerHTML);
+    console.log(proizved);
+}
+document.addEventListener("contextmenu", e => {
+    addUm(e.target);
+}); 
+</script>
+/*********************************************************************************************************************************/-->
+
+     <!-- Задача 3
+Написать функцию, которая строит таблицу n (кол-во столбцов) на k (кол-во строк), используя Javascript. В каждую ячийку записать случайное число.
+
+При нажатии на любую ячейку таблицы, закрашивать все соседние с ней ячейки в случайный цвет -->
+
+     <script>
+         function getHeader() {
+             const thead = document.createElement('thead');
+             const tr = document.createElement('tr');
+
+             thead.append(tr);
+             for (let i = 1; i <= limit; i++) {
+                 const th = document.createElement('th');
+                 th.textContent = `${i}`;
+                 tr.append(th)
+             }
+             const th = document.createElement('th');
+             tr.append(th);
+             return thead;
+         }
+
+         function getRow(tdCount, rowNumber) {
+             const tr = document.createElement('tr');
+             for (let i = 1; i < limit; i++) {
+                 const td = document.createElement('td');
+                 td.textContent = Math.random();
+                 tr.append(td);
+             }
+             const row = document.createElement('row');
+             row.textContent = Math.random();
+             const td = document.createElement('td');
+             td.append(row);
+             tr.append(td);
+             return tr;
+         }
+         const limit = 5;
+         const table = document.createElement('table');
+         document.body.append(table);
+         const tbody = document.createElement('tbody');
+         table.append(getHeader(limit))
+         table.append(tbody);
+         for (let i = 1; i < limit; i++) {
+             tbody.append(getRow(limit, i))
+         }
+
+
+         table.addEventListener('click', function (event) {
+             if (event.target.tagName === 'TD') {
+                 const td = event.target.closest('td');
+
+
+                 if (td.cellIndex === table.rows) {
+                     const index = event.target.closest('td').cellIndex;
+                     document.body.querySelectorAll('td, tr').forEach(td => td.style.backgroundColor = '')
+                     Array.from(table.rows).forEach(t => {
+                         if (t.style.backgroundColor) {
+                             t.cells.item(index).style.backgroundColor = 'pink';
+                         } else {
+                             t.cells.item(index).style.backgroundColor = 'green';
+                         }
+                     })
+
+                 }
+             }
+         })
+     </script>
+
+
+ </body>
+
+ </html>

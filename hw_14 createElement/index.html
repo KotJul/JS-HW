@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        const header = document.createElement('header');
+        const main = document.createElement('main');
+        const footer = document.createElement('footer');
+
+        document.body.before(header, main, footer);
+
+        const nav = document.createElement('nav');
+        const article = document.createElement('article');
+        const aside = document.createElement('aside');
+        aside.classList.add('sidebar');
+        const pInFooter = document.createElement('p');
+
+        header.prepend(nav);
+        main.append(article, aside);
+        footer.prepend(pInFooter);
+        pInFooter.innerHTML = 'copyright <b>text</b>';
+        
+        const ul = document.createElement('ul');
+        ul.classList.add('head-menu');
+        nav.prepend(ul);
+        for( let i = 1; i <= 4; i++){
+            const li = document.createElement('li');
+            li.textContent = 'page'+ i;
+            ul.append(li);
+        }
+
+        const h1 = document.createElement('h1');
+        const pInArticle = document.createElement('p');
+        article.append(h1,pInArticle);
+        h1.textContent = 'title';
+        pInArticle.textContent = 'content';
+
+        const ulInAside = document.createElement('ul');
+        aside.prepend(ulInAside);
+
+        for( let i = 1; i <= 3; i++){
+            const liInAside = document.createElement('li');
+            liInAside.textContent = 'post' + i;
+            ulInAside.append(liInAside);
+        }
+    </script>
+</body>
+
+</html>
